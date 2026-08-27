@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file.
   copyright, description) plus the instantiated `plugin_object` itself.
 - `PluginBase`: marker base class plugins (or your own intermediate category base classes)
   subclass so `PluginManager` can find and categorize them.
-- GitHub Actions CI workflow running the test suite on Python 3.8-3.13 and linting with ruff.
+- GitHub Actions CI workflow running the test suite on Python 3.10-3.14 and linting with ruff.
 - Sphinx documentation setup under `gen_docs/`.
 
 ### Changed

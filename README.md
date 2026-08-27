@@ -8,7 +8,7 @@ imports, categorizes, and instantiates it for you — no extra registration step
 
 ## Requirements
 
-- Python 3.8+
+- Python 3.10+
 - [packaging](https://pypi.org/project/packaging/) (installed automatically as a dependency)
 
 ## Installation
