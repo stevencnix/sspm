@@ -16,6 +16,8 @@ All notable changes to this project will be documented in this file.
 - `PluginManager` is now safe to use from multiple threads: internal state is protected by a lock,
   and `active_plugins`/`categorized_plugins` return snapshots rather than live references.
 - GitHub Actions CI workflow running the test suite on Python 3.10-3.14 and linting with ruff.
+- GitHub Actions publish workflow: builds and publishes to PyPI via Trusted Publishing (OIDC, no
+  stored API token) whenever a v* tag is pushed, or on manual dispatch.
 - Sphinx documentation setup under `gen_docs/`.
 - Regression test coverage for import_plugins()'s handling of malformed plugins: a module with
   zero PluginBase subclasses, a module with more than one, and a plugin whose info file omits
