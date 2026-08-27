@@ -108,6 +108,21 @@ A `Plugin` object exposes the metadata from its `.info` file (`name`, `version`,
 `website`, `copyright`, `description`) as well as `plugin_object`, the instantiated plugin class
 itself.
 
+## Runtime Plugins
+
+`PluginManager` is meant to be used for plugins that come and go while your process is running,
+not just a one-time scan at startup:
+
+- **Adding a plugin after startup**: drop a new plugin's folder into the plugin directory, then
+  call `plugin_manager.rescan()`. Unlike `import_plugins()`, `rescan()` only loads plugins that
+  aren't already active — it won't re-instantiate or replace a plugin that's already loaded.
+- **Removing a plugin**: `plugin_manager.remove_plugin("Plugin Name")` (raises `KeyError` if no
+  plugin with that name is active).
+- **Thread safety**: `PluginManager` is safe to use from multiple threads. All reads and writes go
+  through an internal lock, and `active_plugins`/`categorized_plugins` return a snapshot rather
+  than a live reference, so code iterating one of them won't be affected by a concurrent
+  `import_plugins()`, `rescan()`, or `remove_plugin()` call on another thread.
+
 ## More Examples
 
 See the [`examples/`](examples) directory for a runnable calculator example with `Add` and

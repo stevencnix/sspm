@@ -10,6 +10,11 @@ All notable changes to this project will be documented in this file.
   copyright, description) plus the instantiated `plugin_object` itself.
 - `PluginBase`: marker base class plugins (or your own intermediate category base classes)
   subclass so `PluginManager` can find and categorize them.
+- `PluginManager.rescan()`: picks up plugins added to the plugin directory after the initial
+  `import_plugins()` call, without re-instantiating or replacing already-active plugins. For
+  runtime plugin loading, not just a one-time startup scan.
+- `PluginManager` is now safe to use from multiple threads: internal state is protected by a lock,
+  and `active_plugins`/`categorized_plugins` return snapshots rather than live references.
 - GitHub Actions CI workflow running the test suite on Python 3.10-3.14 and linting with ruff.
 - Sphinx documentation setup under `gen_docs/`.
 - Regression test coverage for import_plugins()'s handling of malformed plugins: a module with
@@ -17,6 +22,8 @@ All notable changes to this project will be documented in this file.
   the optional [Documentation] section entirely.
 - test_examples.py runs examples/calculator.py as a real subprocess (from both the repo root and
   from examples/) and checks its output.
+- Regression/feature test coverage for `rescan()` (picks up new plugins, doesn't reinstantiate
+  active ones) and a concurrency smoke test for the new thread-safety.
 
 ### Changed
 - None
