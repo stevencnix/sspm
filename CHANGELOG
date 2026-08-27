@@ -1,0 +1,26 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+## [1.0.0] - 2026-08-26
+### Added
+- Initial release. A basic, hands-off Python plugin manager (`PluginManager`): point it at a
+  plugin directory and it discovers, imports, and instantiates each plugin's module based on a
+  companion `.info` file, and categorizes plugins by the `PluginBase` subclass they use.
+- `Plugin`: exposes a plugin's parsed `.info` file metadata (name, version, author, website,
+  copyright, description) plus the instantiated `plugin_object` itself.
+- `PluginBase`: marker base class plugins (or your own intermediate category base classes)
+  subclass so `PluginManager` can find and categorize them.
+- GitHub Actions CI workflow running the test suite on Python 3.8-3.13 and linting with ruff.
+- Sphinx documentation setup under `gen_docs/`.
+
+### Changed
+- None
+
+### Deprecated
+- None
+
+### Removed
+- None
+
+### Fixed
+- None

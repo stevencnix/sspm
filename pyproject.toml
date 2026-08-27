@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "SSPM"
+dynamic = ["version"]
+description = "SSPM: a simple, hands-off Python plugin manager"
+readme = "README.md"
+license = "PolyForm-Noncommercial-1.0.0"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Steven Nix", email = "stevencnix@gmail.com" },
+]
+requires-python = ">=3.8"
+dependencies = [
+    "packaging",
+]
+classifiers = [
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff",
+]
+
+[project.urls]
+Homepage = "https://github.com/stevencnix/sspm"
+Repository = "https://github.com/stevencnix/sspm"
+Changelog = "https://github.com/stevencnix/sspm/blob/develop/CHANGELOG"
+
+[tool.setuptools]
+packages = ["sspm"]
+
+[tool.setuptools.dynamic]
+version = { attr = "sspm.version.version" }
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

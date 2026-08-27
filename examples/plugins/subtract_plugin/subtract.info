@@ -1,0 +1,9 @@
+[Core]
+Name = Subtract Plugin
+Module = subtract_plugin
+
+[Documentation]
+Author = Steven Nix
+Version = 1.0.0
+Website = None
+Description = Plugin performing basic subtract operation

@@ -1,0 +1,9 @@
+[Core]
+Name = Add Plugin
+Module = add_plugin
+
+[Documentation]
+Author = Steven Nix
+Version = 1.0.0
+Website = None
+Description = Plugin performing basic add operation
