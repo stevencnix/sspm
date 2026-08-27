@@ -7,8 +7,7 @@ name = "SSPM"
 dynamic = ["version"]
 description = "SSPM: a simple, hands-off Python plugin manager"
 readme = "README.md"
-license = "PolyForm-Noncommercial-1.0.0"
-license-files = ["LICENSE"]
+license = { text = "PolyForm-Noncommercial-1.0.0" }
 authors = [
     { name = "Steven Nix", email = "stevencnix@gmail.com" },
 ]
