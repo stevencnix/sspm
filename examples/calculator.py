@@ -1,10 +1,18 @@
+import sys
 from pathlib import Path
 
-from sspm.pluginmanager import PluginManager
+_EXAMPLES_DIR = Path(__file__).resolve().parent
+
+# The plugins in ./plugins import `examples.calculator_plugin_base`, which needs this directory's
+# parent (the repo root) on sys.path. Without this, running the script directly (e.g.
+# `python examples/calculator.py` or `cd examples && python calculator.py`) fails to resolve that
+# import regardless of the current working directory, since neither puts the repo root on sys.path.
+sys.path.insert(0, str(_EXAMPLES_DIR.parent))
+
+from sspm.pluginmanager import PluginManager  # noqa: E402 -- must follow the sys.path fix-up above
 
 if __name__ == "__main__":
-    path = Path("./plugins").resolve().as_posix()
-    plugin_manager = PluginManager("./plugins")
+    plugin_manager = PluginManager(str(_EXAMPLES_DIR / "plugins"))
     plugin_manager.import_plugins()
 
     # To see all loaded plugins you can use active_plugins
